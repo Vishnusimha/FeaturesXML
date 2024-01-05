@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.vishnu.featuresxml"
-        minSdk = 34
+        minSdk = 29
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -36,6 +36,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+//    for view binding
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -49,8 +53,8 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
 //    Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
 // Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.48")
@@ -71,11 +75,11 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.7.6")
 
 // OkHttp
-    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
 // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
 // View Model
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
@@ -83,6 +87,7 @@ dependencies {
 
 // Gson
     implementation("com.google.code.gson:gson:2.10")
+//Text to speech
 }
 
 

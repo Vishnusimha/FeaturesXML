@@ -1,7 +1,7 @@
 package com.vishnu.featuresxml.di
 
-import com.vishnu.featuresxml.repository.SwipeApiService
 import com.vishnu.featuresxml.repository.ProductRepository
+import com.vishnu.featuresxml.repository.SwipeApiService
 import com.vishnu.featuresxml.viewmodel.ProductViewModel
 import dagger.Module
 import dagger.Provides

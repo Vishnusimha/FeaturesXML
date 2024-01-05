@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <!-- Internet permission is required to access cloud data over internet (HTTP requests)-->
-    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Internet permission is required to access cloud data over internet (HTTP requests) -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- For Speech to Text -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
-        android:name="com.vishnu.featuresxml.FeaturesXml"
+        android:name=".FeaturesXml"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FeaturesXML"
         tools:targetApi="31">
+        <activity
+            android:name=".presentation.SpeechToTextPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.SpeechActivity"
+            android:exported="false" />
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true">

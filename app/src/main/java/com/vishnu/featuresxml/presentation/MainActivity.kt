@@ -1,30 +1,31 @@
 package com.vishnu.featuresxml.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.vishnu.featuresxml.data.AddProductRequest
-import com.vishnu.featuresxml.R
+import com.vishnu.featuresxml.databinding.ActivityMainBinding
 import com.vishnu.featuresxml.viewmodel.ProductViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+    private lateinit var _binding: ActivityMainBinding
 
     private val viewModel: ProductViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(_binding.root)
     }
 
-    override fun onResume() {
-        super.onResume()
-        // Observe the StateFlow in the ViewModel
+    override fun onStart() {
+        super.onStart()
         lifecycleScope.launchWhenStarted {
             viewModel.products.collect { products ->
                 // Update your RecyclerView adapter with the products
@@ -43,5 +44,9 @@ class MainActivity : AppCompatActivity() {
                 tax = "5.0"
             )
         )
+    }
+
+    fun goToSpeechActivity(view: View) {
+        startActivity(Intent(this, SpeechActivity::class.java))
     }
 }

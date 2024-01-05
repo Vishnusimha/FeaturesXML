@@ -30,6 +30,14 @@ class SpeechToTextPageActivity : AppCompatActivity() {
         setContentView(_binding.root)
 
         // Check and request necessary permissions
+        getAudioPermissionAndSetUp()
+
+        viewModel.recognitionResult.observe(this, Observer {
+            _binding.resultView.text = it
+        })
+    }
+
+    private fun getAudioPermissionAndSetUp() {
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.RECORD_AUDIO
@@ -41,17 +49,8 @@ class SpeechToTextPageActivity : AppCompatActivity() {
                 RECORD_AUDIO_PERMISSION_REQUEST_CODE
             )
         } else {
-//            setup
-            setupSpeechRecognition()
-        }
-
-        viewModel.recognitionResult.observe(this, Observer {
-            _binding.resultView.text = it
-        })
-    }
-
-    private fun setupSpeechRecognition() {
-        viewModel.setupSpeechRecognition(this)
+    //     setup
+            viewModel.setupSpeechRecognition(this)        }
     }
 
     override fun onDestroy() {

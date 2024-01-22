@@ -4,6 +4,21 @@ plugins {
     //    hilt
     id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
+//    sonarqube
+    id ("org.sonarqube") version "4.4.1.3373"
+}
+
+sonar {
+    properties {
+        property("sonar.host.url", "http://localhost:9000")
+        property("sonar.token", project.findProperty("sonarToken")?.toString() ?: "")
+//       Use Token generated in sonarqube or below properties with credentials
+//        property("sonar.login", "loginID")
+//        property("sonar.password","SonarqubePassword")
+        property("sonar.projectName", rootProject.name)
+        property("sonar.projectKey", "com.vishnu.featuresxml")
+        property("sonar.projectVersion", "1")
+    }
 }
 
 android {

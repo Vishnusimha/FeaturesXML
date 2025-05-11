@@ -4,13 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkInfo
+import androidx.work.WorkManager
 import com.vishnu.featuresxml.data.AddProductRequest
 import com.vishnu.featuresxml.databinding.ActivityMainBinding
 import com.vishnu.featuresxml.viewmodel.ProductViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -26,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        lifecycleScope.launchWhenStarted {
+        lifecycleScope.launch {
             viewModel.products.collect { products ->
                 // Update your RecyclerView adapter with the products
                 Log.i("INFO", products.toString())
@@ -47,6 +53,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goToSpeechActivity(view: View) {
+    }
+
+    fun startSpeechToText(view: View) {
         startActivity(Intent(this, SpeechActivity::class.java))
     }
 }

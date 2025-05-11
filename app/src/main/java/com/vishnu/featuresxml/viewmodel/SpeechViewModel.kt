@@ -16,8 +16,8 @@ import javax.inject.Inject
 class SpeechViewModel @Inject constructor(application: Application) : ViewModel() {
 
     //text to speech API impl
-    private val _recognizedText = MutableLiveData<String>()
-    val recognizedText: LiveData<String> get() = _recognizedText
+    private val _recognizedText = MutableLiveData<String?>()
+    val recognizedText: MutableLiveData<String?> get() = _recognizedText
 
     private val textToSpeechEngine: TextToSpeech by lazy {
         TextToSpeech(
